@@ -36,8 +36,10 @@ struct var *var(struct query query) {
         entry = NULL; // give away ownership of the new entry we just inserted
 
     if (!query.index) { // we requested a single element
-        if (query.value)
+        if (query.value) {
+            free((*v)->value);
             (*v)->value = strdup(query.value);
+        }
         goto end;
     }
 
