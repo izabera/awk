@@ -67,7 +67,7 @@ struct vector {
     size_t used;
 };
 
-size_t regexsplit(regex_t *regex, const char *str, struct vector *delims) {
+void regexsplit(regex_t *regex, const char *str, struct vector *delims) {
     for (size_t i = 0; ; i++) {
         if (delims->used + sizeof(regmatch_t) > delims->alloc)
         {
