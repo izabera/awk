@@ -9,7 +9,7 @@ static int varcmp(const void *a, const void *b) {
 
 struct var *vars;
 
-struct var *var(struct query query) {
+struct var *var_(struct query query) {
 #define makeentry(...) memcpy(malloc(sizeof(struct var)), &(struct var) { __VA_ARGS__ }, sizeof(struct var))
 #define freeentry(entry) do { if (entry) { free(entry->key); free(entry->value); free(entry); } } while (0)
     struct var *entry = makeentry(strdup(query.name));

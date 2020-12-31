@@ -15,5 +15,9 @@ struct query {
     void *(*search)(const void *key, void **rootp, int (*compar)(const void *, const void *));
 };
 
-struct var *var(struct query);
+struct var *var_(struct query);
+#include <search.h>
+#define var(...) var_((struct query) { __VA_ARGS__, .search = tsearch })
+#define value(...) ((char *)(var(__VA_ARGS__)->value))
+#define in(...) (var_)((struct query) { __VA_ARGS__, .search = (void *)tfind })
 #endif
