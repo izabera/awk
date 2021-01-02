@@ -1,4 +1,4 @@
-awk: awk.o var.o split.o
+awk: awk.o var.o split.o string.o
 
 .PHONY: clean
 
